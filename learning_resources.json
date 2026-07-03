@@ -1,0 +1,54 @@
+{
+  "CKA": {"name": "Linux Foundation — CKA Certification", "url": "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/"},
+  "CKAD": {"name": "Linux Foundation — CKAD Certification", "url": "https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/"},
+  "AWS Solutions Architect": {"name": "AWS Certification", "url": "https://aws.amazon.com/certification/"},
+  "RHCE": {"name": "Red Hat Certification", "url": "https://www.redhat.com/en/services/certification"},
+  "Terraform Associate": {"name": "HashiCorp Certifications", "url": "https://developer.hashicorp.com/certifications"},
+  "AWS DevOps Professional": {"name": "AWS Certification", "url": "https://aws.amazon.com/certification/"},
+  "Oracle Java Professional": {"name": "Oracle Certification", "url": "https://education.oracle.com/certification"},
+  "Databricks": {"name": "Databricks Certification", "url": "https://www.databricks.com/learn/certification"},
+  "SnowPro": {"name": "Snowflake Certifications", "url": "https://www.snowflake.com/certifications/"},
+  "AWS Machine Learning Specialty": {"name": "AWS Certification", "url": "https://aws.amazon.com/certification/"},
+  "TensorFlow Developer Certificate": {"name": "TensorFlow Certificate", "url": "https://www.tensorflow.org/certificate"},
+
+  "ACCA": {"name": "ACCA Global", "url": "https://www.accaglobal.com/"},
+  "CPA": {"name": "AICPA — Become a CPA", "url": "https://www.aicpa-cima.com/become-a-cpa"},
+  "CMA": {"name": "IMA — CMA Certification", "url": "https://www.imanet.org/cma-certification"},
+  "ICWAI": {"name": "Institute of Cost Accountants of India", "url": "https://icmai.in/"},
+  "CFA": {"name": "CFA Institute", "url": "https://www.cfainstitute.org/"},
+  "FRM": {"name": "GARP — FRM Certification", "url": "https://www.garp.org/frm"},
+  "CIA": {"name": "The IIA — CIA Certification", "url": "https://www.theiia.org/en/certifications/cia/"},
+
+  "Google Ads Certification": {"name": "Google Skillshop", "url": "https://skillshop.withgoogle.com/"},
+  "HubSpot Content Marketing": {"name": "HubSpot Academy", "url": "https://academy.hubspot.com/"},
+  "Google Analytics Certification": {"name": "Google Skillshop", "url": "https://skillshop.withgoogle.com/"},
+  "Salesforce Certified Sales Professional": {"name": "Salesforce Trailhead", "url": "https://trailhead.salesforce.com/"},
+
+  "SHRM-CP": {"name": "SHRM Certification", "url": "https://www.shrm.org/credentials"},
+  "SHRM-SCP": {"name": "SHRM Certification", "url": "https://www.shrm.org/credentials"},
+  "PHR": {"name": "HRCI — PHR Certification", "url": "https://www.hrci.org/"},
+  "LinkedIn Certified Professional Recruiter": {"name": "LinkedIn Talent Solutions", "url": "https://business.linkedin.com/talent-solutions"},
+
+  "RN License": {"name": "NCSBN — Nursing Licensure", "url": "https://www.ncsbn.org/"},
+  "BLS": {"name": "American Heart Association — CPR & BLS", "url": "https://www.heart.org/en/cpr"},
+  "ACLS": {"name": "American Heart Association — ACLS", "url": "https://www.heart.org/en/cpr"},
+  "Healthcare Management Certification": {"name": "American College of Healthcare Executives", "url": "https://www.ache.org/"},
+
+  "Google UX Design Certificate": {"name": "Google UX Design Certificate (Coursera)", "url": "https://www.coursera.org/professional-certificates/google-ux-design"},
+  "NN/g UX Certification": {"name": "Nielsen Norman Group UX Certification", "url": "https://www.nngroup.com/ux-certification/"},
+  "Adobe Certified Expert": {"name": "Adobe Certification", "url": "https://www.adobe.com/"},
+
+  "Bar Admission": {"name": "American Bar Association", "url": "https://www.americanbar.org/"},
+  "Certified Paralegal": {"name": "NALA — Certified Paralegal", "url": "https://www.nala.org/"},
+
+  "APICS/CPIM": {"name": "ASCM — CPIM Certification", "url": "https://www.ascm.org/"},
+  "Six Sigma Green Belt": {"name": "ASQ — Six Sigma Certification", "url": "https://asq.org/cert/six-sigma-green-belt"},
+  "Six Sigma Black Belt": {"name": "ASQ — Six Sigma Certification", "url": "https://asq.org/cert/six-sigma-black-belt"},
+  "PMP": {"name": "PMI — PMP Certification", "url": "https://www.pmi.org/certifications/project-management-pmp"},
+
+  "Certified Customer Success Manager (CCSM)": {"name": "SuccessCOACHING — CCSM", "url": "https://www.successcoaching.co/"},
+  "Zendesk Certified": {"name": "Zendesk Training & Certification", "url": "https://www.zendesk.com/service/training-certification/"},
+
+  "Teaching License": {"name": "U.S. Dept. of Education — Teacher Certification Overview", "url": "https://www.ed.gov/"},
+  "ATD Certification": {"name": "ATD Certification Institute", "url": "https://www.td.org/certification"}
+}

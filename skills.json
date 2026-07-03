@@ -1,0 +1,216 @@
+{
+  "Information Technology": {
+    "Programming": [
+      "Java", "J2EE", "Spring", "Spring Boot", "Hibernate", "Struts", "Python",
+      "JavaScript", "TypeScript", "Node.js", "Go", "Rust", "Scala", "Kotlin",
+      "C", "C++", "C#", "PHP", "Ruby", "Perl", "Shell Script", "PowerShell",
+      "Bash", "YAML", "JSON", "XML"
+    ],
+    "Cloud": [
+      "AWS", "Azure", "GCP", "PCF", "OpenShift", "AWS EC2", "AWS S3",
+      "AWS Lambda", "AWS ECS", "AWS EKS", "AWS RDS", "Azure AKS",
+      "Google Kubernetes Engine", "Serverless Architecture"
+    ],
+    "Containers": [
+      "Docker", "Docker Compose", "Kubernetes", "Helm", "Istio", "Podman",
+      "Containerd", "OpenShift"
+    ],
+    "CI_CD": [
+      "Jenkins", "Git", "GitHub", "GitHub Actions", "GitLab", "GitLab CI",
+      "Azure DevOps", "Bitbucket", "CircleCI", "Bamboo", "Maven", "Gradle",
+      "ANT", "UDeploy", "Harbor", "Kaniko"
+    ],
+    "Monitoring": [
+      "Splunk", "Grafana", "Prometheus", "Nagios", "AppDynamics", "Dynatrace",
+      "ELK", "ElasticSearch", "Kibana", "CloudWatch", "OpenTelemetry"
+    ],
+    "Automation": [
+      "Ansible", "Terraform", "Puppet", "Chef", "SaltStack"
+    ],
+    "Infrastructure": [
+      "Linux", "Unix", "Apache", "Apache Tomcat", "Tomcat", "JBoss",
+      "WebLogic", "WebSphere", "Nginx", "IIS"
+    ],
+    "Databases": [
+      "Oracle", "Oracle 9i", "Oracle 10g", "Oracle 11g", "Oracle 12c",
+      "SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Sybase", "DB2",
+      "Redis", "Cassandra"
+    ],
+    "Messaging": [
+      "Kafka", "IBM MQ", "RabbitMQ", "ActiveMQ"
+    ],
+    "Data Engineering": [
+      "Spark", "Airflow", "Snowflake", "SQL", "dbt", "Redshift", "BigQuery",
+      "Hadoop", "Hive"
+    ],
+    "AI & Machine Learning": [
+      "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch",
+      "Generative AI", "LLM", "Prompt Engineering", "LangChain",
+      "Natural Language Processing", "Computer Vision", "MLOps"
+    ],
+    "Networking": [
+      "TCP", "UDP", "DNS", "HTTP", "HTTPS", "SSH", "FTP", "SFTP", "SCP",
+      "Load Balancer"
+    ],
+    "Tools": [
+      "Jira", "ServiceNow", "Remedy", "BMC Remedy", "BlackDuck", "SonarQube",
+      "Artifactory", "Control-M", "Autosys"
+    ]
+  },
+
+  "Finance & Accounting": {
+    "Financial Reporting & Analysis": [
+      "Budgeting", "Forecasting", "Variance Analysis", "MIS Reporting",
+      "IFRS", "GAAP", "Financial Statements", "Financial Modelling",
+      "Cost Analysis", "P&L Management", "Financial Planning"
+    ],
+    "Accounting Operations": [
+      "Accounts Payable", "Accounts Receivable", "General Ledger",
+      "Reconciliations", "Bank Reconciliation", "Payroll", "Fixed Assets",
+      "Bookkeeping", "Accruals", "Journal Entries"
+    ],
+    "Financial Management": [
+      "Cash Flow", "Working Capital", "Treasury Management",
+      "Risk Management", "Investment Planning", "Forex Management",
+      "Cost Control", "Portfolio Management"
+    ],
+    "ERP & Business Tools": [
+      "SAP", "SAP FI-CO", "Tally", "MS Dynamics", "Oracle Financials",
+      "QuickBooks", "Power BI", "Advanced Excel", "Navigator", "NetSuite",
+      "Robotic Process Automation"
+    ],
+    "Compliance & Audit": [
+      "SOX Compliance", "Audit Coordination", "Regulatory Compliance",
+      "Statutory Compliance", "Internal Controls", "Internal Audit",
+      "Tax Compliance", "Audit Recovery", "ESG Reporting"
+    ]
+  },
+
+  "Sales & Marketing": {
+    "Digital Marketing": [
+      "SEO", "SEM", "Google Analytics", "Google Analytics 4", "Google Ads",
+      "Meta Ads", "Content Marketing", "Email Marketing",
+      "Marketing Automation", "HubSpot", "Performance Marketing",
+      "Programmatic Advertising"
+    ],
+    "Brand & Content": [
+      "Brand Strategy", "Content Strategy", "Copywriting",
+      "Social Media Marketing", "Influencer Marketing", "Video Marketing"
+    ],
+    "Sales Operations": [
+      "CRM", "Salesforce", "Lead Generation", "Pipeline Management",
+      "Account Management", "B2B Sales", "B2C Sales", "Sales Forecasting",
+      "Negotiation", "Cold Calling", "Territory Management"
+    ],
+    "Marketing Analytics": [
+      "Google Tag Manager", "A/B Testing", "Marketing Analytics", "Tableau",
+      "Power BI", "Conversion Rate Optimization", "Customer Segmentation"
+    ]
+  },
+
+  "Human Resources": {
+    "Talent Acquisition": [
+      "Recruitment", "Sourcing", "Applicant Tracking Systems", "Onboarding",
+      "Employer Branding", "LinkedIn Recruiter", "Campus Hiring",
+      "Interview Coordination"
+    ],
+    "HR Operations": [
+      "HRIS", "Payroll Management", "Employee Relations",
+      "Performance Management", "Compensation & Benefits", "HR Policies",
+      "Workday", "SAP SuccessFactors"
+    ],
+    "People Development": [
+      "Learning & Development", "Talent Management", "Succession Planning",
+      "Employee Engagement", "Diversity & Inclusion", "Coaching & Mentoring"
+    ],
+    "Compliance": [
+      "Labor Law Compliance", "EEOC Compliance", "HR Audits",
+      "Employment Law", "Workplace Investigations"
+    ]
+  },
+
+  "Healthcare & Nursing": {
+    "Clinical Skills": [
+      "Patient Care", "Vital Signs Monitoring", "Medication Administration",
+      "Wound Care", "IV Therapy", "CPR", "BLS", "ACLS", "Patient Assessment",
+      "Triage"
+    ],
+    "Healthcare Systems": [
+      "EMR", "EHR", "Epic Systems", "Cerner", "HIPAA Compliance",
+      "Medical Coding", "Clinical Documentation"
+    ],
+    "Specializations": [
+      "ICU", "Emergency Care", "Pediatric Care", "Geriatric Care",
+      "Surgical Assistance", "Telehealth", "Infection Control"
+    ]
+  },
+
+  "Design & Creative": {
+    "Design Tools": [
+      "Figma", "Adobe Photoshop", "Adobe Illustrator", "Adobe XD", "Sketch",
+      "Canva", "Adobe InDesign", "Adobe After Effects"
+    ],
+    "UX/UI": [
+      "User Research", "Wireframing", "Prototyping", "Usability Testing",
+      "Design Systems", "Interaction Design", "Accessibility Design",
+      "Information Architecture"
+    ],
+    "Creative Skills": [
+      "Branding", "Typography", "Visual Design", "Motion Graphics",
+      "Illustration", "Art Direction"
+    ]
+  },
+
+  "Legal": {
+    "Legal Practice": [
+      "Contract Drafting", "Legal Research", "Litigation",
+      "Legal Compliance", "Due Diligence", "Intellectual Property",
+      "Corporate Governance", "Mergers & Acquisitions", "Legal Writing"
+    ],
+    "Legal Tools": [
+      "Westlaw", "LexisNexis", "Case Management Software", "eDiscovery"
+    ]
+  },
+
+  "Operations & Supply Chain": {
+    "Supply Chain": [
+      "Procurement", "Inventory Management", "Logistics", "Vendor Management",
+      "Demand Planning", "Supply Chain Optimization", "Warehouse Management",
+      "Import/Export Compliance"
+    ],
+    "Operations Management": [
+      "Process Improvement", "Six Sigma", "Lean Management",
+      "Quality Assurance", "Project Management", "Root Cause Analysis"
+    ],
+    "Operations Tools": [
+      "SAP", "Oracle SCM", "ERP Systems", "Advanced Excel", "Power BI"
+    ]
+  },
+
+  "Customer Support & Success": {
+    "Customer Service": [
+      "Customer Support", "Technical Support", "Customer Retention",
+      "Customer Onboarding", "Conflict Resolution", "Ticket Management",
+      "Live Chat Support"
+    ],
+    "Success Tools": [
+      "Zendesk", "Freshdesk", "Salesforce Service Cloud", "Intercom",
+      "HubSpot Service Hub"
+    ],
+    "Success Metrics": [
+      "Customer Success", "NPS", "Churn Reduction", "Account Growth",
+      "Customer Health Scoring"
+    ]
+  },
+
+  "Education & Training": {
+    "Teaching": [
+      "Curriculum Development", "Lesson Planning", "Classroom Management",
+      "Instructional Design", "Student Assessment", "Differentiated Instruction"
+    ],
+    "Ed Tech": [
+      "LMS", "Google Classroom", "Moodle", "Zoom",
+      "E-Learning Development"
+    ]
+  }
+}

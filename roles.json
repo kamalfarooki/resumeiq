@@ -1,0 +1,173 @@
+{
+  "Site Reliability Engineer": {
+    "domain": "Information Technology",
+    "skills": ["Linux", "Docker", "Kubernetes", "AWS", "Jenkins", "Git", "Terraform", "Splunk", "Prometheus", "Grafana", "Ansible", "Python", "Shell Script"],
+    "certifications": ["CKA", "AWS Solutions Architect", "RHCE"],
+    "trending_skills": ["OpenTelemetry", "Platform Engineering", "GitOps", "eBPF-based monitoring"]
+  },
+  "DevOps Engineer": {
+    "domain": "Information Technology",
+    "skills": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "Jenkins", "Git", "GitHub", "Helm", "Ansible", "Linux"],
+    "certifications": ["CKA", "Terraform Associate", "AWS DevOps Professional"],
+    "trending_skills": ["GitOps", "Platform Engineering", "AI-assisted CI/CD", "FinOps"]
+  },
+  "Java Developer": {
+    "domain": "Information Technology",
+    "skills": ["Java", "Spring", "Spring Boot", "Hibernate", "Oracle", "Maven", "Git"],
+    "certifications": ["Oracle Java Professional"],
+    "trending_skills": ["Spring Boot 3 / Java 21", "Reactive Programming", "Microservices with Kubernetes"]
+  },
+  "Data Engineer": {
+    "domain": "Information Technology",
+    "skills": ["Python", "Spark", "Kafka", "Snowflake", "Airflow", "SQL"],
+    "certifications": ["Databricks", "SnowPro"],
+    "trending_skills": ["dbt", "Lakehouse Architecture", "Real-time streaming (Kafka/Flink)"]
+  },
+  "Machine Learning Engineer": {
+    "domain": "Information Technology",
+    "skills": ["Python", "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch", "SQL"],
+    "certifications": ["AWS Machine Learning Specialty", "TensorFlow Developer Certificate"],
+    "trending_skills": ["Generative AI", "LLM", "Prompt Engineering", "LangChain", "MLOps"]
+  },
+
+  "Finance and Accounts Manager": {
+    "domain": "Finance & Accounting",
+    "skills": ["Budgeting", "Forecasting", "MIS Reporting", "IFRS", "GAAP", "Accounts Payable", "Accounts Receivable", "Reconciliations", "Cash Flow", "Treasury Management", "SAP"],
+    "certifications": ["ACCA", "CPA", "CMA", "ICWAI"],
+    "trending_skills": ["Robotic Process Automation", "ESG Reporting", "Power BI", "AI-assisted forecasting"]
+  },
+  "Financial Analyst": {
+    "domain": "Finance & Accounting",
+    "skills": ["Financial Modelling", "Variance Analysis", "Budgeting", "Forecasting", "Advanced Excel", "Power BI", "Financial Statements"],
+    "certifications": ["CFA", "FRM"],
+    "trending_skills": ["Power BI", "Python for Finance", "ESG Reporting"]
+  },
+  "Accountant": {
+    "domain": "Finance & Accounting",
+    "skills": ["General Ledger", "Accounts Payable", "Accounts Receivable", "Reconciliations", "Bookkeeping", "Payroll", "Tally", "SAP"],
+    "certifications": ["CPA", "ICWAI"],
+    "trending_skills": ["Cloud Accounting (QuickBooks/NetSuite)", "Robotic Process Automation"]
+  },
+  "Audit & Compliance Manager": {
+    "domain": "Finance & Accounting",
+    "skills": ["Internal Audit", "Regulatory Compliance", "IFRS", "GAAP", "SOX Compliance", "Internal Controls"],
+    "certifications": ["CIA", "CPA", "ACCA"],
+    "trending_skills": ["ESG Reporting", "Data Analytics for Audit", "Continuous Auditing"]
+  },
+
+  "Digital Marketing Manager": {
+    "domain": "Sales & Marketing",
+    "skills": ["SEO", "SEM", "Google Analytics 4", "Content Marketing", "Marketing Automation", "Social Media Marketing", "Google Ads"],
+    "certifications": ["Google Ads Certification", "HubSpot Content Marketing", "Google Analytics Certification"],
+    "trending_skills": ["AI-powered marketing tools", "Programmatic Advertising", "TikTok Ads", "Marketing Automation (HubSpot/Marketo)"]
+  },
+  "Sales Manager": {
+    "domain": "Sales & Marketing",
+    "skills": ["CRM", "Salesforce", "Lead Generation", "Pipeline Management", "Account Management", "Sales Forecasting", "Negotiation"],
+    "certifications": ["Salesforce Certified Sales Professional"],
+    "trending_skills": ["AI-assisted lead scoring", "Sales Enablement Tools", "LinkedIn Sales Navigator"]
+  },
+  "Marketing Analyst": {
+    "domain": "Sales & Marketing",
+    "skills": ["Google Analytics 4", "A/B Testing", "Marketing Analytics", "Tableau", "Advanced Excel"],
+    "certifications": ["Google Analytics Certification"],
+    "trending_skills": ["Marketing Mix Modeling", "Customer Data Platforms", "Predictive Analytics"]
+  },
+
+  "HR Manager": {
+    "domain": "Human Resources",
+    "skills": ["Recruitment", "Employee Relations", "Performance Management", "Compensation & Benefits", "HR Policies", "HRIS"],
+    "certifications": ["SHRM-CP", "PHR"],
+    "trending_skills": ["People Analytics", "AI in Recruiting", "Hybrid Workforce Policy Design"]
+  },
+  "Talent Acquisition Specialist": {
+    "domain": "Human Resources",
+    "skills": ["Recruitment", "Sourcing", "Applicant Tracking Systems", "Onboarding", "Employer Branding", "LinkedIn Recruiter"],
+    "certifications": ["SHRM-CP", "LinkedIn Certified Professional Recruiter"],
+    "trending_skills": ["AI Sourcing Tools", "Skills-based Hiring", "Employer Branding on Social"]
+  },
+  "HR Business Partner": {
+    "domain": "Human Resources",
+    "skills": ["Employee Relations", "Talent Management", "Succession Planning", "Employee Engagement", "HR Policies"],
+    "certifications": ["SHRM-SCP", "PHR"],
+    "trending_skills": ["People Analytics", "Diversity & Inclusion Strategy", "Hybrid Workforce Policy Design"]
+  },
+
+  "Registered Nurse": {
+    "domain": "Healthcare & Nursing",
+    "skills": ["Patient Care", "Vital Signs Monitoring", "Medication Administration", "CPR", "BLS", "Patient Assessment", "EMR"],
+    "certifications": ["RN License", "BLS", "ACLS"],
+    "trending_skills": ["Telehealth", "EHR Interoperability", "Remote Patient Monitoring"]
+  },
+  "Clinical Coordinator": {
+    "domain": "Healthcare & Nursing",
+    "skills": ["Patient Care", "EMR", "EHR", "HIPAA Compliance", "Clinical Documentation"],
+    "certifications": ["BLS", "Healthcare Management Certification"],
+    "trending_skills": ["Telehealth Coordination", "Value-based Care Models"]
+  },
+
+  "UI/UX Designer": {
+    "domain": "Design & Creative",
+    "skills": ["Figma", "User Research", "Wireframing", "Prototyping", "Usability Testing", "Design Systems"],
+    "certifications": ["Google UX Design Certificate", "NN/g UX Certification"],
+    "trending_skills": ["AI-assisted Design (Figma AI)", "Accessibility Design (WCAG)", "Design Systems at Scale"]
+  },
+  "Graphic Designer": {
+    "domain": "Design & Creative",
+    "skills": ["Adobe Photoshop", "Adobe Illustrator", "Branding", "Typography", "Visual Design"],
+    "certifications": ["Adobe Certified Expert"],
+    "trending_skills": ["Generative AI Design Tools (Midjourney/Firefly)", "Motion Design"]
+  },
+
+  "Corporate Lawyer": {
+    "domain": "Legal",
+    "skills": ["Contract Drafting", "Legal Research", "Legal Compliance", "Due Diligence", "Corporate Governance", "Mergers & Acquisitions"],
+    "certifications": ["Bar Admission"],
+    "trending_skills": ["AI-assisted Contract Review", "Data Privacy Law (GDPR/CCPA)", "ESG Legal Compliance"]
+  },
+  "Paralegal": {
+    "domain": "Legal",
+    "skills": ["Legal Research", "Contract Drafting", "Case Management Software", "Litigation"],
+    "certifications": ["Certified Paralegal"],
+    "trending_skills": ["eDiscovery Tools", "AI-assisted Legal Research"]
+  },
+
+  "Supply Chain Manager": {
+    "domain": "Operations & Supply Chain",
+    "skills": ["Procurement", "Inventory Management", "Logistics", "Vendor Management", "Demand Planning", "Supply Chain Optimization"],
+    "certifications": ["APICS/CPIM", "Six Sigma Green Belt"],
+    "trending_skills": ["AI-driven Demand Forecasting", "Supply Chain Resilience Planning", "Sustainability in Supply Chain"]
+  },
+  "Operations Manager": {
+    "domain": "Operations & Supply Chain",
+    "skills": ["Process Improvement", "Six Sigma", "Lean Management", "Quality Assurance", "Project Management"],
+    "certifications": ["Six Sigma Black Belt", "PMP"],
+    "trending_skills": ["Process Automation (RPA)", "Data-driven Operations"]
+  },
+
+  "Customer Success Manager": {
+    "domain": "Customer Support & Success",
+    "skills": ["Customer Success", "Account Growth", "Customer Onboarding", "NPS", "Churn Reduction", "Salesforce Service Cloud"],
+    "certifications": ["Certified Customer Success Manager (CCSM)"],
+    "trending_skills": ["Customer Health Scoring Automation", "AI-assisted Support Tools"]
+  },
+  "Customer Support Specialist": {
+    "domain": "Customer Support & Success",
+    "skills": ["Customer Support", "Technical Support", "Ticket Management", "Zendesk", "Conflict Resolution"],
+    "certifications": ["Zendesk Certified"],
+    "trending_skills": ["AI Chatbot Escalation Handling", "Omnichannel Support Tools"]
+  },
+
+  "Teacher": {
+    "domain": "Education & Training",
+    "skills": ["Curriculum Development", "Lesson Planning", "Classroom Management", "Student Assessment"],
+    "certifications": ["Teaching License"],
+    "trending_skills": ["AI Tools for Personalized Learning", "Blended Learning Design"]
+  },
+  "Instructional Designer": {
+    "domain": "Education & Training",
+    "skills": ["Instructional Design", "LMS", "E-Learning Development", "Curriculum Development"],
+    "certifications": ["ATD Certification"],
+    "trending_skills": ["AI-assisted Course Authoring", "Microlearning Design"]
+  }
+}

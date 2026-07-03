@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}ResumeIQ — Score your resume, fix it on the spot{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-eyebrow">Resume scoring &amp; live editor</div>
+  <h1 class="hero-title">Know exactly why your resume<br>scores what it scores.</h1>
+  <p class="hero-sub">
+    Upload a resume, optionally paste the job description you're targeting, and get an
+    ATS score with a breakdown you can actually act on — then edit the text and watch
+    the score recalculate in real time, right on this page.
+  </p>
+</section>
+
+<section class="upload-wrap">
+  <form
+    id="analyzeForm"
+    class="upload-card"
+    action="{{ url_for('analyze') }}"
+    method="POST"
+    enctype="multipart/form-data">
+
+    <div class="upload-col">
+      <label class="field-label">01 — Resume file</label>
+
+      <div class="dropzone" id="dropzone">
+        <input
+          type="file"
+          name="resume"
+          id="resumeInput"
+          accept=".pdf,.docx,.txt"
+          required>
+        <div class="dropzone-inner">
+          <span class="dropzone-title" id="dropzoneTitle">Drop your resume here</span>
+          <span class="dropzone-sub">or click to browse — PDF, DOCX or TXT, up to 8MB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="upload-col">
+      <label class="field-label" for="jdInput">02 — Job description <span class="field-optional">(optional, sharpens the score)</span></label>
+      <textarea
+        name="job_description"
+        id="jdInput"
+        rows="10"
+        placeholder="Paste the job description here. ResumeIQ will compare its required skills against your resume and flag what's missing."></textarea>
+      <div class="jd-counter"><span id="jdCharCount">0</span> characters</div>
+    </div>
+
+    <div class="upload-actions">
+      <button type="submit" class="btn btn-primary" id="analyzeBtn">
+        Analyze resume →
+      </button>
+      <span class="upload-hint">Nothing is stored longer than your session.</span>
+    </div>
+  </form>
+</section>
+
+<section class="how-it-works">
+  <div class="how-item">
+    <span class="how-index">Upload</span>
+    <p>We extract your resume text and check it against ATS-relevant structure: sections, contact info, skills, length.</p>
+  </div>
+  <div class="how-item">
+    <span class="how-index">Score</span>
+    <p>You get an overall ATS score, a role match, and a gap list — including missing keywords from the job description.</p>
+  </div>
+  <div class="how-item">
+    <span class="how-index">Edit</span>
+    <p>Fix the resume text right in the browser and re-score instantly. No re-uploading, no waiting.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

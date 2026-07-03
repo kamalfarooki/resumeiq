@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{% block title %}{{ filename or "Your resume" }} — ResumeIQ{% endblock %}
+
+{% block content %}
+<section class="workbench">
+
+  <div class="workbench-header">
+    <div>
+      <div class="workbench-eyebrow">Analyzing</div>
+      <h1 class="workbench-file">{{ filename or "Untitled resume" }}</h1>
+    </div>
+    <div class="workbench-header-actions">
+      <a href="{{ url_for('download') }}" class="btn btn-ghost">Download PDF report</a>
+      <a href="{{ url_for('home') }}" class="btn btn-ghost">Analyze another</a>
+    </div>
+  </div>
+
+  <div class="workbench-grid">
+
+    <!-- ============== LEFT: EDITOR ============== -->
+    <div class="pane editor-pane">
+      <div class="pane-tabs">
+        <button class="pane-tab active" data-editor-tab="resume">Resume text</button>
+        <button class="pane-tab" data-editor-tab="jd">Job description</button>
+      </div>
+
+      <div class="editor-body" data-editor-panel="resume">
+        <textarea id="resumeText" spellcheck="false">{{ resume_text }}</textarea>
+      </div>
+
+      <div class="editor-body" data-editor-panel="jd" hidden>
+        <textarea id="jdText" spellcheck="false" placeholder="Paste a job description to compare against.">{{ jd_text }}</textarea>
+      </div>
+
+      <div class="editor-footer">
+        <span class="editor-meta"><span id="wordCount">{{ data.word_count }}</span> words</span>
+        <button id="rescoreBtn" class="btn btn-primary">Re-score edits</button>
+      </div>
+    </div>
+
+    <!-- ============== RIGHT: LIVE SCORE ============== -->
+    <div class="pane score-pane">
+
+      <div class="score-hero">
+        <div class="score-number-row">
+          <span class="score-number" id="scoreValue">{{ data.ats_score }}</span>
+          <span class="score-percent">%</span>
+          <span class="score-delta" id="scoreDelta"></span>
+        </div>
+        <div class="score-status" id="recalcStatus">ATS score</div>
+        <div class="score-domain" id="domainValue">{{ data.domain }} &middot; {{ data.detected_role }}</div>
+        <div class="score-substats">
+          <div><span class="substat-label">Grade</span><span class="substat-value" id="gradeValue">{{ data.grade }}</span></div>
+          <div><span class="substat-label">Resume health</span><span class="substat-value" id="healthValue">{{ data.resume_health }}%</span></div>
+          <div><span class="substat-label">Interview ready</span><span class="substat-value" id="interviewValue">{{ data.interview_readiness }}</span></div>
+        </div>
+      </div>
+
+      <div class="pane-tabs">
+        <button class="pane-tab active" data-score-tab="breakdown">Breakdown</button>
+        <button class="pane-tab" data-score-tab="skills">Skills</button>
+        <button class="pane-tab" data-score-tab="sections">Sections</button>
+        <button class="pane-tab" data-score-tab="career">Career match</button>
+        <button class="pane-tab" data-score-tab="jd">JD match</button>
+        <button class="pane-tab" data-score-tab="trending">Trending skills</button>
+        <button class="pane-tab" data-score-tab="learning">Learning</button>
+        <button class="pane-tab" data-score-tab="tips">Recommendations</button>
+        <button class="pane-tab" data-score-tab="wording">Wording &amp; mistakes</button>
+        <button class="pane-tab" data-score-tab="recruiter">Recruiter tips</button>
+      </div>
+
+      <!-- BREAKDOWN -->
+      <div class="score-panel" data-score-panel="breakdown">
+        <div class="bar-list" id="breakdownList">
+          {% set components = [
+            ("Experience", data.experience_score, 20),
+            ("Education", data.education_score, 10),
+            ("Certifications", data.certification_score, 10),
+            ("Projects", data.project_score, 10),
+            ("Contact info", data.contact_score, 5),
+            ("Skills", data.skill_score, 35),
+            ("Resume length", data.length_score, 10),
+            ("Section completeness", data.section_score, 10),
+          ] %}
+          {% for label, value, max in components %}
+          <div class="bar-row" data-bar="{{ label }}" data-max="{{ max }}">
+            <div class="bar-row-top">
+              <span>{{ label }}</span>
+              <span class="bar-value">{{ value }}/{{ max }}</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:{{ (value / max * 100) | round }}%"></div></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="score-panel" data-score-panel="skills" hidden>
+        <div id="skillsContent">
+          {% if data.categorized_skills %}
+            {% for domain, categories in data.categorized_skills.items() %}
+              <div class="domain-block">
+                <div class="domain-label">{{ domain }}</div>
+                {% for category, skills in categories.items() %}
+                <div class="skill-group">
+                  <h4>{{ category }}</h4>
+                  <div class="tag-row">
+                    {% for skill in skills %}<span class="tag tag-skill">{{ skill }}</span>{% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="empty-note">No recognized technical skills found yet.</p>
+          {% endif %}
+
+          {% if data.missing_core_skills %}
+          <div class="skill-group">
+            <h4>Core skills missing for {{ data.detected_role }}</h4>
+            <div class="tag-row">
+              {% for skill in data.missing_core_skills %}<span class="tag tag-missing">{{ skill }}</span>{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if data.recommended_certifications %}
+          <div class="skill-group">
+            <h4>Recommended certifications</h4>
+            <div class="tag-row">
+              {% for cert in data.recommended_certifications %}<span class="tag tag-cert">{{ cert }}</span>{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- SECTIONS -->
+      <div class="score-panel" data-score-panel="sections" hidden>
+        <ul class="section-list" id="sectionsContent">
+          {% for section, present in data.sections.items() %}
+          <li class="{{ 'is-present' if present else 'is-missing' }}">
+            <span>{{ section }}</span>
+            <span class="section-status">{{ "Present" if present else "Missing" }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- CAREER MATCH -->
+      <div class="score-panel" data-score-panel="career" hidden>
+        <div id="careerContent">
+          <div class="career-best">
+            <span class="field-label">Best match</span>
+            <div class="career-best-role">{{ data.best_role.role if data.best_role else data.detected_role }}</div>
+            <div class="career-best-coverage">{{ data.best_role.coverage if data.best_role else 0 }}% skill coverage</div>
+          </div>
+          {% for role in data.role_matches %}
+          <div class="bar-row" data-max="100">
+            <div class="bar-row-top"><span>{{ role.role }}</span><span class="bar-value">{{ role.coverage }}%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:{{ role.coverage }}%"></div></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- JD MATCH -->
+      <div class="score-panel" data-score-panel="jd" hidden>
+        <div id="jdContent">
+          {% if data.jd_match %}
+            <div class="jd-score-row">
+              <span class="jd-score">{{ data.jd_match.match_score }}%</span>
+              <span>match to the pasted job description</span>
+            </div>
+            {% if data.jd_match.matched_skills %}
+            <div class="skill-group">
+              <h4>Matched skills</h4>
+              <div class="tag-row">
+                {% for s in data.jd_match.matched_skills %}<span class="tag tag-skill">{{ s }}</span>{% endfor %}
+              </div>
+            </div>
+            {% endif %}
+            {% if data.jd_match.missing_skills %}
+            <div class="skill-group">
+              <h4>Skills the JD wants that your resume doesn't mention</h4>
+              <div class="tag-row">
+                {% for s in data.jd_match.missing_skills %}<span class="tag tag-missing">{{ s }}</span>{% endfor %}
+              </div>
+            </div>
+            {% endif %}
+          {% else %}
+            <p class="empty-note">Paste a job description in the "Job description" tab on the left, then hit Re-score, to see a match here.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- TRENDING SKILLS -->
+      <div class="score-panel" data-score-panel="trending" hidden>
+        <div id="trendingContent">
+          {% if data.trending_skills %}
+            <p class="panel-intro">Skills currently in demand for {{ data.detected_role }} that aren't on your resume yet:</p>
+            <div class="tag-row">
+              {% for skill in data.trending_skills %}<span class="tag tag-trending">{{ skill }}</span>{% endfor %}
+            </div>
+          {% else %}
+            <p class="empty-note">No trending-skill data for this role yet, or you already have all of them covered.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- LEARNING -->
+      <div class="score-panel" data-score-panel="learning" hidden>
+        <div id="learningContent">
+          {% if data.learning_plan %}
+            <p class="panel-intro">Where to close your biggest gaps for {{ data.detected_role }}:</p>
+            {% for item in data.learning_plan %}
+            <div class="learning-item">
+              <div class="learning-item-title">{{ item.title }}</div>
+              <div class="learning-item-reason">{{ item.reason }}</div>
+              <div class="learning-links">
+                {% for resource in item.resources %}
+                <a href="{{ resource.url }}" target="_blank" rel="noopener" class="learning-link">{{ resource.name }} ↗</a>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <p class="empty-note">Nothing to learn right now — your skills and certifications already cover this role well.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="score-panel" data-score-panel="tips" hidden>
+        <div id="recommendationsContent">
+          {% for item in data.recommendations %}
+          <div class="rec-row">
+            <span class="rec-priority priority-{{ item.priority | lower }}">{{ item.priority }}</span>
+            <div>
+              <div class="rec-title">{{ item.title }}</div>
+              <div class="rec-message">{{ item.message }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- WORDING & MISTAKES -->
+      <div class="score-panel" data-score-panel="wording" hidden>
+        <div id="wordingContent">
+          {% if data.writing_issues %}
+            <p class="panel-intro">Click a line to jump to it in the editor on the left.</p>
+            {% for issue in data.writing_issues %}
+            <div class="wording-row" data-line="{{ issue.line_number }}" data-original="{{ issue.original_word or '' }}" data-suggested="{{ issue.suggested_word or '' }}">
+              <span class="wording-type wording-type-{{ issue.type }}">{{ issue.title }}</span>
+              <div class="wording-body">
+                <div class="wording-line">"{{ issue.line_text }}"</div>
+                <div class="wording-message">{{ issue.message }}</div>
+              </div>
+              <button class="btn btn-ghost btn-small wording-jump" type="button">Edit this line →</button>
+            </div>
+            {% endfor %}
+          {% else %}
+            <p class="empty-note">No wording issues spotted — no weak openers, first-person pronouns, overlong bullets, or likely typos found.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- RECRUITER TIPS -->
+      <div class="score-panel" data-score-panel="recruiter" hidden>
+        <div id="recruiterContent">
+          {% for item in data.recruiter_tips %}
+          <div class="rec-row">
+            <span class="rec-priority priority-recruiter">Tip</span>
+            <div>
+              <div class="rec-title">{{ item.title }}</div>
+              <div class="rec-message">{{ item.message }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

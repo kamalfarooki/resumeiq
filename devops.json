@@ -1,0 +1,44 @@
+{
+  "core_skills": [
+    "Docker",
+    "Kubernetes",
+    "Jenkins",
+    "Git",
+    "GitHub",
+    "Linux",
+    "AWS",
+    "Azure",
+    "Terraform",
+    "Ansible",
+    "Helm",
+    "Kafka",
+    "Redis",
+    "Nginx",
+    "Grafana",
+    "Prometheus",
+    "Splunk",
+    "Python",
+    "Bash"
+  ],
+
+  "trending_skills": [
+    "ArgoCD",
+    "GitHub Actions",
+    "OpenShift",
+    "Crossplane",
+    "OpenTelemetry",
+    "Istio",
+    "Karpenter",
+    "Backstage",
+    "Vault",
+    "Falco"
+  ],
+
+  "recommended_certifications": [
+    "CKA",
+    "CKAD",
+    "AWS Solutions Architect",
+    "Terraform Associate",
+    "RHCSA"
+  ]
+}
