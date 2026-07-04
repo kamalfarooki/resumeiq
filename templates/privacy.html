@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy — ResumeIQ{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+  <div class="legal-eyebrow">Legal</div>
+  <h1 class="legal-title">Privacy Policy</h1>
+  <p class="legal-updated">Last updated: {{ updated_date }}</p>
+
+  <p>ResumeIQ ("we", "us") analyzes resumes to give people feedback on structure, skills, and job-description fit. This page explains exactly what happens to your data when you use it.</p>
+
+  <h2>What we collect</h2>
+  <p>When you upload a resume, we extract its text to run the analysis. If you paste a job description, we read that too. We do not require an account, a name, or an email address to use ResumeIQ — the only thing tying your session together is an anonymous cookie.</p>
+
+  <h2>What we don't do</h2>
+  <ul>
+    <li>We don't require sign-up, so we don't collect your name or email unless it happens to already be written inside the resume text you upload.</li>
+    <li>We don't sell your data, resume content, or job description text to anyone.</li>
+    <li>We don't use your resume content to train any AI model.</li>
+    <li>We don't share your resume content with third parties, other than the infrastructure providers (hosting and, where enabled, a session cache) needed to run the service itself.</li>
+  </ul>
+
+  <h2>How long we keep it</h2>
+  <p>The uploaded file itself (the PDF/DOCX/TXT) is deleted from our server immediately after we extract its text — we don't keep a copy of the original file. The extracted text and your analysis results are kept only for the duration of your session, and automatically expire after 6 hours of the session being created, or sooner if you close out and don't return. There is no long-term storage of your resume content once that window passes.</p>
+
+  <h2>Cookies</h2>
+  <p>We use one functional cookie to keep track of your session (so the live editor knows which resume's score to update). This cookie doesn't track you across other websites.</p>
+  <p>If this site displays advertising (via Google AdSense) or affiliate links (for example, in the Learning tab, which links to third-party learning platforms), those providers may set their own cookies or use tracking parameters when you interact with their content. We don't control those cookies — see the relevant provider's own privacy policy (e.g. Google's) for details on how they're used. Where required by law (for example, for visitors in the EU/UK), we'll show a cookie consent option before any advertising cookies are set.</p>
+
+  <h2>Third-party links</h2>
+  <p>The Learning tab links out to external sites — official certification bodies, Coursera, YouTube, and similar. Some of these may be affiliate links, meaning we may earn a commission if you sign up or purchase through them, at no extra cost to you. We only link to resources we believe are genuinely relevant to closing a skills gap identified in your resume. Once you leave ResumeIQ, that site's own privacy policy applies.</p>
+
+  <h2>Your choices</h2>
+  <p>Since there's no account, there's no persistent profile to request deletion of beyond what already expires automatically. If you want your current session's data removed immediately rather than waiting for it to expire, contact us (below) and we'll clear it manually.</p>
+
+  <h2>Children's privacy</h2>
+  <p>ResumeIQ isn't directed at children, and we don't knowingly collect data from anyone under 18.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes in a way that matters, we'll update the date at the top of this page.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or your data: <strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+</section>
+{% endblock %}

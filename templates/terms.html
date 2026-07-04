@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Terms of Service — ResumeIQ{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+  <div class="legal-eyebrow">Legal</div>
+  <h1 class="legal-title">Terms of Service</h1>
+  <p class="legal-updated">Last updated: {{ updated_date }}</p>
+
+  <p>By using ResumeIQ, you agree to the following terms. If you don't agree, please don't use the service.</p>
+
+  <h2>What ResumeIQ is</h2>
+  <p>ResumeIQ is an informational tool that analyzes resume text and gives feedback on structure, keyword coverage, and job-description fit. It's meant to help you improve your own resume — it is not a guarantee of interview callbacks, job offers, or how any specific employer's applicant tracking system will actually behave. Scores and recommendations are estimates based on pattern matching, not a certification of quality.</p>
+
+  <h2>Your responsibilities</h2>
+  <ul>
+    <li>Only upload resumes you have the right to upload — your own, or someone else's with their permission.</li>
+    <li>Don't use ResumeIQ to attack, scrape, overload, or reverse-engineer the service.</li>
+    <li>Don't upload content that is unlawful, harmful, or infringes someone else's rights.</li>
+  </ul>
+
+  <h2>Ownership of your content</h2>
+  <p>You retain all rights to the resume and job description text you submit. We don't claim ownership of it, and as described in our <a href="{{ url_for('privacy') }}">Privacy Policy</a>, we don't keep it beyond your session or use it to train any model.</p>
+
+  <h2>No warranty</h2>
+  <p>ResumeIQ is provided "as is." We do our best to keep the analysis accurate and the service available, but we don't guarantee it will be error-free, uninterrupted, or perfectly suited to every industry or resume format — particularly scanned or image-only PDFs, which aren't currently supported for text extraction.</p>
+
+  <h2>Limitation of liability</h2>
+  <p>To the extent permitted by law, ResumeIQ and its operator aren't liable for any indirect, incidental, or consequential damages arising from your use of the service, including outcomes related to job applications or hiring decisions. The service is a feedback tool, not a substitute for your own judgment or professional career advice.</p>
+
+  <h2>Third-party links</h2>
+  <p>The Learning tab links to external sites for courses and certifications, some of which may be affiliate links (see our <a href="{{ url_for('privacy') }}">Privacy Policy</a>). We aren't responsible for the content, accuracy, or practices of those third-party sites.</p>
+
+  <h2>Changes</h2>
+  <p>We may update these terms as the service changes. Continued use after an update means you accept the revised terms.</p>
+
+  <h2>Governing law</h2>
+  <p>These terms are governed by the laws of [YOUR COUNTRY/STATE HERE] without regard to conflict-of-law principles.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about these terms: <strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+</section>
+{% endblock %}

@@ -230,6 +230,24 @@ def healthz():
     return jsonify({"status": "ok"})
 
 
+LEGAL_LAST_UPDATED = "July 2026"
+
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html", updated_date=LEGAL_LAST_UPDATED)
+
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html", updated_date=LEGAL_LAST_UPDATED)
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 @app.errorhandler(413)
 def too_large(_e):
     flash("That file is too large. Please upload something under 8MB.", "error")

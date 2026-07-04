@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}About — ResumeIQ{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+  <div class="legal-eyebrow">About</div>
+  <h1 class="legal-title">Why ResumeIQ exists</h1>
+
+  <p>Most resume feedback is either generic ("use action verbs!") or a black box ("your ATS score is 62%, good luck"). ResumeIQ tries to do neither — it shows you exactly which sections, skills, and phrasing are actually affecting your score, across whatever field you're in, and lets you fix the text right there and watch the score respond.</p>
+
+  <p>It currently covers Information Technology, Finance & Accounting, Sales & Marketing, Human Resources, Healthcare & Nursing, Design & Creative, Legal, Operations & Supply Chain, Customer Support, and Education — with more depth being added as we learn what people actually need.</p>
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Scores your resume against ATS-relevant structure and detects your professional domain automatically</li>
+    <li>Matches your resume against a pasted job description and shows what's missing</li>
+    <li>Lets you edit your resume text directly and re-score instantly, no re-upload</li>
+    <li>Points you to specific learning resources for the skills and certifications most likely to move your score</li>
+    <li>Flags wording issues — weak openers, first-person pronouns, likely typos — and jumps you straight to the line to fix it</li>
+  </ul>
+
+  <h2>Get in touch</h2>
+  <p>Found a bug, have feedback, or want to suggest a professional domain we don't cover yet? Reach out: <strong>[YOUR CONTACT EMAIL HERE]</strong></p>
+
+  <p>For anything about how your data is handled, see our <a href="{{ url_for('privacy') }}">Privacy Policy</a>.</p>
+</section>
+{% endblock %}
