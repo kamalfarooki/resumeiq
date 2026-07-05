@@ -26,6 +26,16 @@ os.makedirs(REPORT_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB upload limit
 
+# Used for Open Graph tags, canonical links, and the sitemap. Update this
+# env var (no code change needed) once you move to a custom domain.
+SITE_URL = os.environ.get("SITE_URL", "https://resumeiq-dm3m.onrender.com").rstrip("/")
+
+
+@app.context_processor
+def inject_site_url():
+    return {"site_url": SITE_URL}
+
+
 ALLOWED_EXTENSIONS = {"pdf", "docx", "txt"}
 
 # --------------------------------------------------------------------
@@ -246,6 +256,34 @@ def terms():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    lines = [
+        "User-agent: *",
+        "Allow: /$",
+        "Allow: /about",
+        "Allow: /privacy",
+        "Allow: /terms",
+        "Disallow: /result",
+        "Disallow: /rescore",
+        "Disallow: /download",
+        "Disallow: /analyze",
+        f"Sitemap: {SITE_URL}/sitemap.xml",
+    ]
+    return "\n".join(lines), 200, {"Content-Type": "text/plain"}
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    pages = ["", "/about", "/privacy", "/terms"]
+    urls = "".join(
+        f"<url><loc>{SITE_URL}{p}</loc></url>" for p in pages
+    )
+    xml = f'<?xml version="1.0" encoding="UTF-8"?>' \
+          f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
+    return xml, 200, {"Content-Type": "application/xml"}
 
 
 @app.errorhandler(413)
