@@ -33,6 +33,23 @@
   wireTabs("[data-editor-tab]", "[data-editor-panel]", "data-editor-tab");
   wireTabs("[data-score-tab]", "[data-score-panel]", "data-score-tab");
 
+  // The recruiter score card is a shortcut into the "Why You'd Get Rejected"
+  // tab, but it isn't itself a tab button — clicking it should trigger the
+  // real tab button so the active-state highlight lands in the right place.
+  document.querySelectorAll("[data-jump-to-tab]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const target = el.getAttribute("data-jump-to-tab");
+      const realTab = document.querySelector(`[data-score-tab="${target}"]`);
+      if (realTab) realTab.click();
+    });
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+
   // ---------------------------------------------------------
   // Live word count as you type
   // ---------------------------------------------------------
@@ -73,6 +90,31 @@
         <div class="bar-track"><div class="bar-fill" style="width:${Math.round((value / max) * 100)}%"></div></div>
       </div>
     `).join("");
+  }
+
+  function renderRecruiterBreakdown(data) {
+    const components = (data.recruiter_score && data.recruiter_score.components) || {};
+    return Object.keys(components).map((label) => {
+      const comp = components[label];
+      return `
+        <div class="bar-row">
+          <div class="bar-row-top"><span>${escapeHtml(label)}</span><span class="bar-value">${comp.value}/${comp.max}</span></div>
+          <div class="bar-track"><div class="bar-fill bar-fill-recruiter" style="width:${Math.round((comp.value / comp.max) * 100)}%"></div></div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderRejection(data) {
+    const reasons = data.rejection_reasons || [];
+    let html = `<p class="panel-intro">Framed the way a recruiter skimming for a few seconds would actually think it — not softened.</p>`;
+    html += reasons.map((r) => `
+      <div class="rec-row">
+        <span class="rec-priority priority-${escapeHtml((r.severity || "").toLowerCase())}">${escapeHtml(r.severity)}</span>
+        <div class="rec-message">${escapeHtml(r.reason)}</div>
+      </div>
+    `).join("");
+    return html;
   }
 
   function renderTagRow(items, cls) {
@@ -230,6 +272,13 @@
     const domainEl = document.getElementById("domainValue");
     if (domainEl) domainEl.textContent = `${data.domain} · ${data.detected_role}`;
 
+    const recruiterScoreEl = document.getElementById("recruiterScoreValue");
+    const recruiterLabelEl = document.getElementById("recruiterScoreLabel");
+    if (recruiterScoreEl && data.recruiter_score) {
+      recruiterScoreEl.textContent = data.recruiter_score.score;
+      recruiterLabelEl.textContent = data.recruiter_score.label;
+    }
+
     if (diff !== 0) {
       scoreDelta.textContent = diff > 0 ? `+${diff}` : `${diff}`;
       scoreDelta.className = "score-delta " + (diff > 0 ? "is-up" : "is-down");
@@ -239,6 +288,8 @@
     }
 
     document.getElementById("breakdownList").innerHTML = renderBreakdown(data);
+    document.getElementById("recruiterBreakdownList").innerHTML = renderRecruiterBreakdown(data);
+    document.getElementById("rejectionContent").innerHTML = renderRejection(data);
     document.getElementById("skillsContent").innerHTML = renderSkills(data);
     document.getElementById("sectionsContent").innerHTML = renderSections(data);
     document.getElementById("careerContent").innerHTML = renderCareer(data);

@@ -483,6 +483,113 @@ textarea:focus{ border-color:var(--blue); }
 .substat-label{ font-size:12px; color:var(--slate-soft); }
 .substat-value{ font-weight:600; font-size:15px; }
 
+/* recruiter score card */
+
+.recruiter-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:22px;
+  padding:16px 18px;
+  background:#FBF0DC;
+  border:1px solid #E8D4A8;
+  border-radius:var(--radius);
+  cursor:pointer;
+  transition:border-color .15s ease;
+}
+
+.recruiter-card:hover{ border-color:var(--amber); }
+
+.recruiter-card-left{ display:flex; flex-direction:column; gap:4px; max-width:70%; }
+
+.recruiter-card-label{
+  font-family:var(--font-mono);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--amber);
+  font-weight:700;
+}
+
+.recruiter-card-sub{ font-size:12px; color:var(--slate); line-height:1.4; }
+
+.recruiter-card-right{ display:flex; align-items:baseline; gap:8px; flex:0 0 auto; }
+
+.recruiter-card-value{
+  font-family:var(--font-display);
+  font-size:32px;
+  font-weight:600;
+  color:var(--ink);
+}
+
+.recruiter-card-status{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--slate-soft);
+  white-space:nowrap;
+}
+
+/* breakdown section divider + recruiter bar variant */
+
+.bar-section-divider{
+  font-family:var(--font-mono);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--amber);
+  margin:24px 0 16px;
+  padding-top:20px;
+  border-top:1px solid var(--hairline);
+}
+
+.bar-fill-recruiter{ background:var(--amber); }
+
+/* feedback widget */
+
+.feedback-widget{
+  margin-top:24px;
+  background:var(--paper-raised);
+  border:1px solid var(--hairline);
+  border-radius:var(--radius);
+  padding:24px;
+}
+
+.feedback-question{
+  font-family:var(--font-display);
+  font-size:17px;
+  font-weight:600;
+  margin:0 0 14px;
+}
+
+.feedback-rating{ display:flex; gap:10px; margin-bottom:14px; }
+
+.feedback-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 18px;
+  border:1px solid var(--hairline);
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:border-color .15s ease, background .15s ease;
+}
+
+.feedback-pill input{ margin:0; }
+
+.feedback-pill:has(input:checked){
+  border-color:var(--blue);
+  background:var(--blue-dim);
+}
+
+.feedback-widget textarea{
+  width:100%;
+  margin-bottom:14px;
+  min-height:60px;
+}
+
 .score-panel{ padding:20px 24px; max-height:460px; overflow-y:auto; }
 
 /* bars */

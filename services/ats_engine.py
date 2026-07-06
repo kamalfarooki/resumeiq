@@ -39,6 +39,11 @@ from services.writing_analyzer import (
     analyze_writing
 )
 
+from services.recruiter_score import (
+    calculate_recruiter_score,
+    generate_rejection_reasons
+)
+
 from services.jd_matcher import (
     match_resume_with_jd
 )
@@ -325,12 +330,16 @@ def analyze_resume(text, jd_text=""):
         "recommendations": [],
         "recruiter_tips": [],
         "learning_plan": [],
-        "writing_issues": []
+        "writing_issues": [],
+        "recruiter_score": {},
+        "rejection_reasons": []
     }
 
     result["recommendations"] = generate_recommendations(result)
     result["recruiter_tips"] = generate_recruiter_tips(result)
     result["learning_plan"] = build_learning_plan(result)
     result["writing_issues"] = analyze_writing(text)
+    result["recruiter_score"] = calculate_recruiter_score(result, text)
+    result["rejection_reasons"] = generate_rejection_reasons(result, result["recruiter_score"])
 
     return result

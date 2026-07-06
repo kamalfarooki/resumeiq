@@ -52,6 +52,40 @@ WEAK_STARTERS = [
 _FIRST_PERSON_PATTERN = re.compile(r"\b(i|i'm|i've|my|we|our|me)\b", re.IGNORECASE)
 
 
+def _merge_wrapped_lines(text):
+    """
+    PDF text extraction frequently wraps a single bullet across two lines
+    with no marker indicating it's a continuation (e.g. "...handling
+    incident resolution, troubleshooting," / "and root cause analysis.").
+    Left unmerged, each fragment gets counted as its own separate bullet,
+    which dilutes quantification/strong-verb rates and double-counts
+    wording issues on what is really one line.
+
+    Heuristic: a line starting with a lowercase letter is treated as a
+    continuation of the previous line rather than a new sentence — this
+    covers the common case (English sentences and resume bullets almost
+    always start capitalized) without needing full NLP. Not exhaustive
+    (a continuation starting with an acronym like "RCA" won't be caught),
+    but a meaningful improvement over treating every physical line as
+    independent.
+    """
+    merged = []
+    for raw_line in text.splitlines():
+        stripped = raw_line.strip()
+        if not stripped:
+            merged.append("")
+            continue
+        is_continuation = (
+            merged and merged[-1] != ""
+            and stripped[0].islower()
+        )
+        if is_continuation:
+            merged[-1] = merged[-1].rstrip() + " " + stripped
+        else:
+            merged.append(stripped)
+    return "\n".join(merged)
+
+
 def _is_bullet_line(line):
     stripped = line.strip()
     if len(stripped) < 15:
@@ -60,6 +94,17 @@ def _is_bullet_line(line):
     if word_count < 4 or word_count > 70:
         return False
     return True
+
+
+def extract_bullets(text):
+    """
+    Public helper: returns the resume's bullet-like lines using the exact
+    same detection heuristic as the wording analysis, so other features
+    (like the recruiter score) don't drift out of sync with what counts
+    as a "bullet" here.
+    """
+    merged_text = _merge_wrapped_lines(text)
+    return [line.strip() for line in merged_text.splitlines() if _is_bullet_line(line)]
 
 
 def _check_weak_opener(line):
@@ -154,6 +199,13 @@ def analyze_writing(text, max_issues=25):
     weak openers, first-person pronouns, overlong bullets, and likely
     typos. Returns a flat list capped at max_issues so the UI stays
     scannable rather than overwhelming on a long resume.
+
+    Deliberately does NOT use _merge_wrapped_lines() here, unlike
+    extract_bullets() — each issue's line_number must point at a real
+    line in the original textarea content for the "jump to this line in
+    the editor" feature to land in the right place. A wrapped-line
+    fragment occasionally getting flagged on its own is a minor cosmetic
+    issue; a jump-to-line landing on the wrong line would be a worse one.
     """
     issues = []
     lines = text.splitlines()
