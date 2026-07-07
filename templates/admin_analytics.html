@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Analytics — ResumeIQ{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+  <div class="legal-eyebrow">Internal</div>
+  <h1 class="legal-title">Analytics</h1>
+  <p class="legal-updated">Storage: {{ storage_mode }}</p>
+
+  <h2>Page views</h2>
+  <ul class="analytics-list">
+    <li><span>Home page</span><strong>{{ counts.pageview_home }}</strong></li>
+    <li><span>Results page</span><strong>{{ counts.pageview_result }}</strong></li>
+    <li><span>About page</span><strong>{{ counts.pageview_about }}</strong></li>
+  </ul>
+
+  <h2>Core actions</h2>
+  <ul class="analytics-list">
+    <li><span>Resumes analyzed</span><strong>{{ counts.analyze_submitted }}</strong></li>
+    <li><span>Re-scores (live editor)</span><strong>{{ counts.rescore_clicked }}</strong></li>
+    <li><span>PDF downloads</span><strong>{{ counts.download_clicked }}</strong></li>
+    <li><span>Learning links clicked</span><strong>{{ counts.learning_link_click }}</strong></li>
+  </ul>
+
+  <h2>Feedback widget</h2>
+  <ul class="analytics-list">
+    <li><span>"Yes, useful"</span><strong>{{ counts.feedback_yes }}</strong></li>
+    <li><span>"No, not useful"</span><strong>{{ counts.feedback_no }}</strong></li>
+  </ul>
+
+  <h2>Tab clicks (results page)</h2>
+  <ul class="analytics-list">
+    <li><span>Breakdown</span><strong>{{ counts.tab_click_breakdown }}</strong></li>
+    <li><span>Why You'd Get Rejected</span><strong>{{ counts.tab_click_rejection }}</strong></li>
+    <li><span>Skills</span><strong>{{ counts.tab_click_skills }}</strong></li>
+    <li><span>Sections</span><strong>{{ counts.tab_click_sections }}</strong></li>
+    <li><span>Career match</span><strong>{{ counts.tab_click_career }}</strong></li>
+    <li><span>JD match</span><strong>{{ counts.tab_click_jd }}</strong></li>
+    <li><span>Trending skills</span><strong>{{ counts.tab_click_trending }}</strong></li>
+    <li><span>Learning</span><strong>{{ counts.tab_click_learning }}</strong></li>
+    <li><span>Recommendations</span><strong>{{ counts.tab_click_tips }}</strong></li>
+    <li><span>Wording & mistakes</span><strong>{{ counts.tab_click_wording }}</strong></li>
+    <li><span>Recruiter tips</span><strong>{{ counts.tab_click_recruiter }}</strong></li>
+  </ul>
+
+  <p class="legal-updated">These are simple lifetime counters, not day-by-day — good enough to gauge overall engagement for now.</p>
+</section>
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{{ filename or "Your resume" }} — ResumeIQ{% endblock %}
+{% block page_name %}result{% endblock %}
 
 {% block content %}
 <section class="workbench">
@@ -10,7 +11,7 @@
       <h1 class="workbench-file">{{ filename or "Untitled resume" }}</h1>
     </div>
     <div class="workbench-header-actions">
-      <a href="{{ url_for('download') }}" class="btn btn-ghost">Download PDF report</a>
+      <a href="{{ url_for('download') }}" class="btn btn-ghost" id="downloadReportLink">Download PDF report</a>
       <a href="{{ url_for('home') }}" class="btn btn-ghost">Analyze another</a>
     </div>
   </div>
@@ -323,7 +324,7 @@
   </div>
 
   <div class="feedback-widget">
-    <form action="[YOUR FORMSPREE ENDPOINT HERE]" method="POST">
+    <form action="https://formspree.io/f/xqevjlej" method="POST">
       <input type="hidden" name="_next" value="{{ request.url }}">
       <input type="hidden" name="page" value="result">
       <input type="hidden" name="detected_role" value="{{ data.detected_role }}">

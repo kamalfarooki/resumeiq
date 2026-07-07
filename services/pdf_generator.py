@@ -36,6 +36,28 @@ def create_pdf(data, filepath):
     story.append(summary_table)
     story.append(Spacer(1, 20))
 
+    if data.get("recruiter_score"):
+        rs = data["recruiter_score"]
+        story.append(Paragraph("Recruiter Score", styles["Heading2"]))
+        story.append(Paragraph(
+            f"<b>{rs['score']}/100 — {rs['label']}</b>",
+            styles["Normal"]
+        ))
+        story.append(Paragraph(
+            "A different question from the ATS score: would a human skimming for a few seconds keep reading?",
+            styles["Normal"]
+        ))
+        story.append(Spacer(1, 8))
+
+        if data.get("rejection_reasons"):
+            story.append(Paragraph("Why You'd Get Rejected", styles["Heading3"]))
+            for reason in data["rejection_reasons"]:
+                severity = reason.get("severity", "")
+                text = reason.get("reason", "")
+                story.append(Paragraph(f"<b>[{severity}]</b> {text}", styles["Normal"]))
+                story.append(Spacer(1, 4))
+        story.append(Spacer(1, 16))
+
     story.append(Paragraph("Technical Skills", styles["Heading2"]))
     skills = ", ".join(data.get("skills", [])) or "No skills detected"
     story.append(Paragraph(skills, styles["Normal"]))

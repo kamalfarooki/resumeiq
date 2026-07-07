@@ -33,6 +33,35 @@
   wireTabs("[data-editor-tab]", "[data-editor-panel]", "data-editor-tab");
   wireTabs("[data-score-tab]", "[data-score-panel]", "data-score-tab");
 
+  // Track which score tabs people actually use (separate from the tab
+  // switching logic above, which just manages active/hidden state).
+  document.querySelectorAll(".pane-tab[data-score-tab]").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-score-tab");
+      if (window.ResumeIQTrack) window.ResumeIQTrack(`tab_click_${target}`);
+    });
+  });
+
+  // Track PDF downloads and Learning tab link clicks via delegation
+  // (learning links are re-rendered by JS on re-score).
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("#downloadReportLink")) {
+      if (window.ResumeIQTrack) window.ResumeIQTrack("download_clicked");
+    }
+    if (e.target.closest(".learning-link")) {
+      if (window.ResumeIQTrack) window.ResumeIQTrack("learning_link_click");
+    }
+  });
+
+  // Track feedback widget yes/no selection (separate from the actual
+  // Formspree submission, which carries the real comment text).
+  document.addEventListener("change", (e) => {
+    if (e.target.name === "rating") {
+      const event = e.target.value === "yes" ? "feedback_yes" : "feedback_no";
+      if (window.ResumeIQTrack) window.ResumeIQTrack(event);
+    }
+  });
+
   // The recruiter score card is a shortcut into the "Why You'd Get Rejected"
   // tab, but it isn't itself a tab button — clicking it should trigger the
   // real tab button so the active-state highlight lands in the right place.
@@ -337,6 +366,7 @@
   // ---------------------------------------------------------
 
   async function rescore() {
+    if (window.ResumeIQTrack) window.ResumeIQTrack("rescore_clicked");
     recalcStatus.textContent = "Recalculating…";
     recalcStatus.classList.add("is-recalculating");
     rescoreBtn.disabled = true;

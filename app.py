@@ -66,6 +66,47 @@ if REDIS_URL:
 _MEMORY_STORE = {}
 
 
+# --------------------------------------------------------------------
+# Lightweight, privacy-respecting analytics.
+#
+# No third-party tracker, no cookies beyond the functional session cookie
+# already in use, no PII — just aggregate counters for a fixed, whitelisted
+# set of events (page views and specific button clicks). Reuses the same
+# Redis connection as the session store when available, with the same
+# in-memory fallback for local development.
+# --------------------------------------------------------------------
+
+SCORE_TABS = [
+    "breakdown", "rejection", "skills", "sections", "career", "jd",
+    "trending", "learning", "tips", "wording", "recruiter"
+]
+
+ALLOWED_EVENTS = {
+    "pageview_home", "pageview_result", "pageview_about",
+    "analyze_submitted", "rescore_clicked", "download_clicked",
+    "learning_link_click", "feedback_yes", "feedback_no",
+} | {f"tab_click_{t}" for t in SCORE_TABS}
+
+_ANALYTICS_MEMORY = {}
+
+
+def _increment_counter(event):
+    if event not in ALLOWED_EVENTS:
+        return False
+    if _redis:
+        _redis.incr(f"analytics:{event}")
+    else:
+        _ANALYTICS_MEMORY[event] = _ANALYTICS_MEMORY.get(event, 0) + 1
+    return True
+
+
+def _get_counter(event):
+    if _redis:
+        val = _redis.get(f"analytics:{event}")
+        return int(val) if val else 0
+    return _ANALYTICS_MEMORY.get(event, 0)
+
+
 def _redis_key(sid):
     return f"resumeiq:session:{sid}"
 
@@ -270,6 +311,8 @@ def robots_txt():
         "Disallow: /rescore",
         "Disallow: /download",
         "Disallow: /analyze",
+        "Disallow: /admin",
+        "Disallow: /track",
         f"Sitemap: {SITE_URL}/sitemap.xml",
     ]
     return "\n".join(lines), 200, {"Content-Type": "text/plain"}
@@ -284,6 +327,28 @@ def sitemap_xml():
     xml = f'<?xml version="1.0" encoding="UTF-8"?>' \
           f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
     return xml, 200, {"Content-Type": "application/xml"}
+
+
+@app.route("/track", methods=["POST"])
+def track_event():
+    payload = request.get_json(silent=True) or {}
+    event = payload.get("event", "")
+    ok = _increment_counter(event)
+    return jsonify({"ok": ok}), (200 if ok else 400)
+
+
+ANALYTICS_ADMIN_KEY = os.environ.get("ANALYTICS_ADMIN_KEY", "")
+
+
+@app.route("/admin/analytics")
+def admin_analytics():
+    # Pretend the page doesn't exist rather than showing a login wall —
+    # don't advertise that an admin page is there to find.
+    if not ANALYTICS_ADMIN_KEY or request.args.get("key") != ANALYTICS_ADMIN_KEY:
+        return render_template("404.html"), 404
+
+    counts = {event: _get_counter(event) for event in sorted(ALLOWED_EVENTS)}
+    return render_template("admin_analytics.html", counts=counts, storage_mode="Redis" if _redis else "In-memory (single worker only)")
 
 
 @app.errorhandler(413)

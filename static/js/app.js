@@ -49,6 +49,7 @@
 
   if (form && analyzeBtn) {
     form.addEventListener("submit", () => {
+      if (window.ResumeIQTrack) window.ResumeIQTrack("analyze_submitted");
       analyzeBtn.disabled = true;
       analyzeBtn.textContent = "Analyzing…";
     });
